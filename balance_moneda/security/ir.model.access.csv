@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_balance_moneda_balance_moneda,balance_moneda.balance_moneda,model_balance_moneda_balance_moneda,base.group_user,1,1,1,1
