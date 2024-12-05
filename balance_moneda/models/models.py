@@ -1,19 +1,25 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import models, fields
 
+class AccountEntry(models.Model):
+    _name = 'custom.account.entry'
+    _description = 'Apunte Contable Personalizado'
 
-# class balance_moneda(models.Model):
-#     _name = 'balance_moneda.balance_moneda'
-#     _description = 'balance_moneda.balance_moneda'
+    name = fields.Char(string='Descripción', required=True)
+    date = fields.Date(string='Fecha', required=True, default=fields.Date.context_today)
+    debit = fields.Float(string='Debe', default=0.0)
+    credit = fields.Float(string='Haber', default=0.0)
+    currency_id = fields.Many2one('res.currency', string='Divisa')
+    amount_currency = fields.Monetary(string='Importe en Divisa', currency_field='currency_id')
+    company_currency_id = fields.Many2one('res.currency', string='Moneda de la Compañía', required=True)
+    balance_currency = fields.Monetary(
+        string='Balance en Moneda',
+        compute='_compute_balance_currency',
+        store=True,
+        currency_field='company_currency_id'
+    )
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
-
+    def _compute_balance_currency(self):
+        for record in self:
+            record.balance_currency = record.debit - record.credit
