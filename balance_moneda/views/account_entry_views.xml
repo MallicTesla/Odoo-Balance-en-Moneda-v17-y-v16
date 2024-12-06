@@ -1,32 +1,48 @@
 <odoo>
-    <record id="view_account_entry_tree" model="ir.ui.view">
-        <field name="name">custom.account.entry.tree</field>
-        <field name="model">custom.account.entry</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="date"/>
-                <field name="debit"/>
-                <field name="credit"/>
-                <field name="balance_currency"/>
-            </tree>
-        </field>
-    </record>
-
-    <record id="view_account_entry_form" model="ir.ui.view">
-        <field name="name">custom.account.entry.form</field>
-        <field name="model">custom.account.entry</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
+    <data>
+        <record id="view_account_entry_tree" model="ir.ui.view">
+            <!-- <field name="name">custom.account.entry.tree</field> -->
+            <field name="name">accounting_entries.account_entry.tree</field>
+            <!-- <field name="model">accountingEntries.accountEntry</field> -->
+            <field name="model">accounting_entries.account_entry</field>
+            <field name="arch" type="xml">
+                <tree>
                     <field name="name"/>
                     <field name="date"/>
                     <field name="debit"/>
                     <field name="credit"/>
                     <field name="balance_currency"/>
-                </sheet>
-            </form>
-        </field>
-    </record>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_account_entry_form" model="ir.ui.view">
+            <!-- <field name="name">custom.account.entry.form</field>
+            <field name="model">accountingEntries.accountEntry</field> -->
+            <field name="name">accounting_entries.account_entry.form</field>
+            <field name="model">accounting_entries.account_entry</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="name"/>
+                        <field name="date"/>
+                        <field name="debit"/>
+                        <field name="credit"/>
+                        <field name="balance_currency"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_account_entry_action" model="ir.actions.act_window">
+            <field name="name">custom.account.entry.tree</field>
+            <field name="res_model">accounting_entries.account_entry</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_root" name="Balance Moneda"/>
+        <menuitem id="menu_balance" name="Balance Moneda" parent="menu_root"/>
+        <menuitem id="menu_balance_list" name="Balance Moneda Lista" parent="menu_balance" action="view_account_entry_action"/>
+    </data>
 </odoo>
 

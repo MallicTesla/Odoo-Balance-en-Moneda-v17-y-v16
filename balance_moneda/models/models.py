@@ -3,7 +3,7 @@
 from odoo import models, fields
 
 class AccountEntry(models.Model):
-    _name = 'custom.account.entry'
+    _name = 'accounting_entries.account_entry'
     _description = 'Apunte Contable Personalizado'
 
     name = fields.Char(string='Descripción', required=True)
