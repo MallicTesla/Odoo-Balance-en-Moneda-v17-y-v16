@@ -10,7 +10,7 @@
 
     'data': [
         'views/account_move_line_views.xml',
-        'data/ir.model.access.csv',
+        'security/ir.model.access.csv',
     ],
 
     'installable': True,
