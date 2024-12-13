@@ -8,6 +8,8 @@
             <!-- Verifica que balance exista en la vista original -->
             <xpath expr="//field[@name='balance']" position="after">
                 <field name="balance_currency"/>
+                <field name="amount_currency"/>
+                <field name="currency_id"/>
             </xpath>
         </field>
     </record>
@@ -20,7 +22,9 @@
         <field name="arch" type="xml">
             <!-- Verifica que balance exista en la vista original -->
             <xpath expr="//field[@name='balance']" position="after">
-                <field name="balance_currency"/>
+                <field name="balance_currency" string="Balance en Moneda"/>
+                <field name="amount_currency" string="Importe en Divisa"/>
+                <field name="currency_id" string="Divisa"/>
             </xpath>
         </field>
     </record>
