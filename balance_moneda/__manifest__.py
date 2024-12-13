@@ -1,31 +1,28 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "balance_moneda",
+    'name': "Balance Moneda",
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
+    'summary': "Este módulo extiende las funcionalidades de los apuntes contables",
 
     'description': """
-Long description of module's purpose
+Este módulo extiende las funcionalidades de los apuntes contables en Odoo agregando un nuevo campo llamado "Balance en Moneda" (balance_currency),
+que calcula y muestra el balance (Debe - Haber) en la moneda definida en la cuenta contable. Además, habilita la visualización de este campo junto con
+"Importe en Divisa" (amount_currency) y "Divisa" (currency_id) en las vistas Tree y Pivot. Esto permite un análisis más detallado y específico en diferentes
+monedas directamente desde las vistas contables.
     """,
 
-    'author': "My Company",
-    'website': "https://www.yourcompany.com",
+    'author': 'PrimateUY',
+    'website': 'https://primate.uy/',
+    'category': 'Contabilidad',
+    'version': '17.1.0',
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Uncategorized',
-    'version': '0.1',
-
-    # any module necessary for this one to work correctly
     'depends': ['base'],
 
-    # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/account_entry_views.xml',
+        'views/account_move_line_views.xml',
     ],
-    # only loaded in demonstration mode
+
     'demo': [
         'demo/demo.xml',
     ],
