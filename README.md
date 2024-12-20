@@ -1,11 +1,12 @@
-Balance Moneda
+# Balance Moneda
 
-Este repositorio contiene el módulo Balance Moneda, desarrollado para extender las funcionalidades del modelo account.move.line en Odoo. El módulo agrega un nuevo campo llamado Balance en Moneda (balance_currency), que calcula y muestra el saldo (Debe - Haber) en la moneda definida en la cuenta contable asociada. Además, incluye mejoras en las vistas Tree y Pivot para un análisis contable más detallado.
+Este repositorio contiene el módulo **Balance Moneda**, desarrollado para extender las funcionalidades del modelo `account.move.line` en Odoo. El módulo agrega un nuevo campo llamado **Balance en Moneda** (`balance_currency`), que calcula y muestra el saldo (Debe - Haber) en la moneda definida en la cuenta contable asociada. Además, incluye mejoras en las vistas `Tree` y `Pivot` para un análisis contable más detallado.
 
-Estructura del Repositorio
+## Estructura del Repositorio
 
 El repositorio contiene dos versiones del módulo, una para Odoo 16 y otra para Odoo 17:
 
+```
 ├── balance_moneda_v16
 │   ├── models
 │   │   ├── __init__.py
@@ -26,75 +27,61 @@ El repositorio contiene dos versiones del módulo, una para Odoo 16 y otra para 
     │   └── account_move_line_views.xml
     ├── __init__.py
     └── __manifest__.py
+```
 
-Características del Módulo
+## Características del Módulo
 
-Campo nuevo: Balance en Moneda (balance_currency)
+1. **Campo nuevo: Balance en Moneda (`balance_currency`)**
+   - Calcula y muestra el saldo (Debe - Haber) en la moneda definida en la cuenta contable asociada.
+   - Usa la moneda de la cuenta (`account_id.currency_id`) para realizar las conversiones necesarias.
 
-Calcula y muestra el saldo (Debe - Haber) en la moneda definida en la cuenta contable asociada.
+2. **Herencia y mejora de vistas**:
+   - Se extienden las vistas `Tree` y `Pivot` para incluir los campos:
+     - `balance_currency`: Balance en la moneda de la cuenta.
+     - `amount_currency`: Importe en divisa.
+     - `currency_id`: Divisa utilizada.
 
-Usa la moneda de la cuenta (account_id.currency_id) para realizar las conversiones necesarias.
+3. **Compatibilidad**:
+   - **balance_moneda_v16**: Compatible con Odoo 16.
+   - **balance_moneda_v17**: Compatible con Odoo 17.
 
-Herencia y mejora de vistas:
+## Requisitos
 
-Se extienden las vistas Tree y Pivot para incluir los campos:
+- Odoo 16 o 17, dependiendo de la versión del módulo.
+- Módulo base de contabilidad (`account`) instalado.
 
-balance_currency: Balance en la moneda de la cuenta.
+## Instalación
 
-amount_currency: Importe en divisa.
+1. Clona este repositorio en la carpeta de `addons` de tu instalación de Odoo:
+   ```bash
+   git clone https://github.com/tu_usuario/balance_moneda.git
+   ```
 
-currency_id: Divisa utilizada.
+2. Reinicia el servidor de Odoo:
+   ```bash
+   ./odoo-bin -u all -d <nombre_de_base_de_datos>
+   ```
 
-Compatibilidad:
+3. Activa el módulo desde la interfaz de Odoo:
+   - Ve a **Aplicaciones**.
+   - Busca "Balance Moneda".
+   - Instálalo.
 
-balance_moneda_v16: Compatible con Odoo 16.
+## Uso del Módulo
 
-balance_moneda_v17: Compatible con Odoo 17.
+1. Accede al menú de **Contabilidad**.
+2. Visualiza los apuntes contables en las vistas `Tree` y `Pivot`.
+3. Observa los nuevos campos:
+   - **Balance en Moneda**: Muestra el saldo calculado en la moneda de la cuenta contable.
+   - **Importe en Divisa** y **Divisa**: Permiten un análisis más detallado.
 
-Requisitos
+## Notas para Desarrolladores
 
-Odoo 16 o 17, dependiendo de la versión del módulo.
+- El módulo extiende el modelo `account.move.line` usando `_inherit`.
+- Se asegura compatibilidad con la configuración de monedas de Odoo, incluyendo monedas de la cuenta y de la compañía.
+- El archivo `ir.model.access.csv` garantiza permisos de lectura adecuados para los campos añadidos.
 
-Módulo base de contabilidad (account) instalado.
+## Licencia
 
-Instalación
+Este módulo se distribuye bajo la licencia LGPL-3. Consulta el archivo `LICENSE` para más información.
 
-Clona este repositorio en la carpeta de addons de tu instalación de Odoo:
-
-git clone https://github.com/tu_usuario/balance_moneda.git
-
-Reinicia el servidor de Odoo:
-
-./odoo-bin -u all -d <nombre_de_base_de_datos>
-
-Activa el módulo desde la interfaz de Odoo:
-
-Ve a Aplicaciones.
-
-Busca "Balance Moneda".
-
-Instálalo.
-
-Uso del Módulo
-
-Accede al menú de Contabilidad.
-
-Visualiza los apuntes contables en las vistas Tree y Pivot.
-
-Observa los nuevos campos:
-
-Balance en Moneda: Muestra el saldo calculado en la moneda de la cuenta contable.
-
-Importe en Divisa y Divisa: Permiten un análisis más detallado.
-
-Notas para Desarrolladores
-
-El módulo extiende el modelo account.move.line usando _inherit.
-
-Se asegura compatibilidad con la configuración de monedas de Odoo, incluyendo monedas de la cuenta y de la compañía.
-
-El archivo ir.model.access.csv garantiza permisos de lectura adecuados para los campos añadidos.
-
-Licencia
-
-Este módulo se distribuye bajo la licencia LGPL-3. Consulta el archivo LICENSE para más información.
