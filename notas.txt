@@ -13,6 +13,7 @@ con -i base se crea a base de datos sesde 0
 
 para activar al modo desarrollador
 "C:/Program Files/Odoo 17.0.20241203/python/python.exe" "C:/Program Files/Odoo 17.0.20241203/server/odoo-bin" -u all -d odoo17
+"C:/Program Files/Odoo 16.0.20241217/python/python.exe" "C:/Program Files/Odoo 16.0.20241217/server/odoo-bin" -u all -d odoo16
 
 para crear un modulo
 "C:/Program Files/Odoo 17.0.20241203/python/python.exe"  "C:/Program Files/Odoo 17.0.20241203/server/odoo-bin" scaffold balance_moneda /ruta/a/tu/repositorio
